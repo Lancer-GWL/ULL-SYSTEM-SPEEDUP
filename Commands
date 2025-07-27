@@ -1,0 +1,108 @@
+🧹 1. Delete Temporary & Cache Files
+Open CMD as administrator and run:
+
+cmd
+Copy
+Edit
+del /q/f/s %TEMP%\*
+del /s /q C:\Windows\Prefetch\*
+cleanmgr
+
+🔄 2. Network Reset (Fix lag from Wi-Fi issues)
+cmd
+Copy
+Edit
+ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+netsh winsock reset
+netsh int ip reset
+Then restart your PC.
+
+🧰 3. Fix System Corruption (If your laptop randomly lags or freezes)
+cmd
+Copy
+Edit
+sfc /scannow
+DISM /Online /Cleanup-Image /RestoreHealth
+These fix corrupted Windows files.
+
+⚠️ 4. Check for Disk Errors
+cmd
+Copy
+Edit
+chkdsk C: /f /r
+Type Y when prompted. It will run on next restart.
+
+⚙️ 5. Disable Background Apps (Manually)
+CMD opens the Startup Manager:
+
+cmd
+Copy
+Edit
+taskmgr
+Go to the Startup tab → disable all unnecessary apps.
+
+💡 6. Optimize Power Settings
+cmd
+Copy
+Edit
+powercfg.cpl
+Select High Performance or Ultimate Performance (if available).
+
+🧠 7. Disable Visual Effects
+CMD opens Performance Settings:
+
+cmd
+Copy
+Edit
+SystemPropertiesPerformance
+Select Adjust for best performance, then click OK.
+
+📦 8. Remove Bloatware (Apps you don't use)
+CMD opens Programs window:
+
+cmd
+Copy
+Edit
+appwiz.cpl
+Uninstall unused apps.
+
+⚡ EXTRA BOOST (Advanced but Safe)
+🧠 Enable Ultimate Performance Plan (hidden on some laptops)
+cmd
+Copy
+Edit
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+Then go to:
+
+cmd
+Copy
+Edit
+powercfg.cpl
+And choose Ultimate Performance.
+
+📁 OPTIONAL: Make a .BAT File to Run All Safe CMD Commands
+Save this as speedup.bat and run as Administrator:
+
+bat
+Copy
+Edit
+@echo off
+echo Deleting temp files...
+del /q/f/s %TEMP%\*
+echo Deleting prefetch files...
+del /s /q C:\Windows\Prefetch\*
+echo Flushing DNS and resetting network...
+ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+netsh winsock reset
+netsh int ip reset
+echo Running system file check...
+sfc /scannow
+echo Done! Restart your PC for best results.
+pause
+
+Author- Lancer
+If you issue is fixed,please star,share and support me.
